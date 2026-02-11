@@ -1,0 +1,29 @@
+class Solution {
+    public List<Integer> commonElements(List<Integer> arr1, List<Integer> arr2, List<Integer> arr3) {
+        List<Integer> res = new ArrayList<>();
+        int i = 0, j = 0, k = 0;
+
+        while (i < arr1.size() && j < arr2.size() && k < arr3.size()) {
+            int val1 = arr1.get(i);
+            int val2 = arr2.get(j);
+            int val3 = arr3.get(k);
+
+            if (val1 == val2 && val2 == val3) {
+                if (res.isEmpty() || res.get(res.size() - 1) != val1) {
+                    res.add(val1);
+                }
+                i++;
+                j++;
+                k++;
+            } else if (val1 < val2) {
+                i++;
+            } else if (val2 < val3) {
+                j++;
+            } else {
+                k++;
+            }
+        }
+
+        return res;
+    }
+}
